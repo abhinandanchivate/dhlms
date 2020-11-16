@@ -17,4 +17,4 @@ logging:
     # info level for all java logs
     ROOT: info
     # debug level for all use defined code logs
-    com.cg: info
+    com.dhl: info
