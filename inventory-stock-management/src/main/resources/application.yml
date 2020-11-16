@@ -1,0 +1,1 @@
+server:  port: ${server_port:9400}spring:  profiles:    active: mysql  application:    name: inventory-stock-management-service
