@@ -48,9 +48,7 @@ public class StockManagementServiceImpl implements StockManagementService {
 	@Override
 	public Product saveProduct(Product product) {
 		
-		Warehouse warehouse = wareHouseRepository.getOne(product.getWarehouse().getWarehouseId());
 		
-		product.setWarehouse(warehouse);
 		
 		return productRepository.save(product);
 	}
