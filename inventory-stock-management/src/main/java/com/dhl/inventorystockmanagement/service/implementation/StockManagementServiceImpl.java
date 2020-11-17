@@ -9,8 +9,10 @@ import com.dhl.inventorystockmanagement.entity.Product;
 import com.dhl.inventorystockmanagement.entity.ProductStockRequest;
 import com.dhl.inventorystockmanagement.entity.RawMaterial;
 import com.dhl.inventorystockmanagement.entity.RawMaterialStockRequest;
+import com.dhl.inventorystockmanagement.entity.Warehouse;
 import com.dhl.inventorystockmanagement.repository.ProductRepository;
 import com.dhl.inventorystockmanagement.repository.RawMaterialRepository;
+import com.dhl.inventorystockmanagement.repository.WarehouseRepository;
 import com.dhl.inventorystockmanagement.service.StockManagementService;
 
 @Service
@@ -21,6 +23,8 @@ public class StockManagementServiceImpl implements StockManagementService {
 	@Autowired
 	private RawMaterialRepository rawMaterialRepository;
 
+	@Autowired
+	private WarehouseRepository wareHouseRepository;
 	@Override
 	public List<Product> getAllProducts() {
 		return productRepository.findAll();
@@ -43,6 +47,11 @@ public class StockManagementServiceImpl implements StockManagementService {
 
 	@Override
 	public Product saveProduct(Product product) {
+		
+		Warehouse warehouse = wareHouseRepository.getOne(product.getWarehouse().getWarehouseId());
+		
+		product.setWarehouse(warehouse);
+		
 		return productRepository.save(product);
 	}
 
