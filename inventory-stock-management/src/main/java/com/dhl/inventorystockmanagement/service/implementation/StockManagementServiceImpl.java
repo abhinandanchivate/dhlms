@@ -49,7 +49,8 @@ public class StockManagementServiceImpl implements StockManagementService {
 	public Product saveProduct(Product product) {
 		
 		
-		
+		Warehouse warehouse = wareHouseRepository.findById(product.getWarehouse().getWarehouseId()).get();
+		product.setWarehouse(warehouse);
 		return productRepository.save(product);
 	}
 
